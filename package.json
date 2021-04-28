@@ -1,0 +1,26 @@
+{
+  "name": "api-garage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisB007/api-garage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisB007/api-garage/issues"
+  },
+  "homepage": "https://github.com/ChrisB007/api-garage#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.6",
+    "nodemon": "^2.0.7",
+    "rowdy-logger": "^1.0.2"
+  }
+}
