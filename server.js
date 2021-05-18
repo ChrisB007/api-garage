@@ -22,9 +22,8 @@ app.use(express.json());  //set to accept json
 
 
 //routes
-
-
-
+const riddleRouter = require('./routes/riddles'); //routes directory
+app.use('/riddles', riddleRouter);
 
 
 //listen

@@ -1,0 +1,6 @@
+http://localhost:4040/riddles
+
+
+###
+
+http://localhost:4040/riddles/23
