@@ -1,10 +1,11 @@
 //Variables
+require('dotenv').config();
 const express = require('express');
 const rowdyLogger = require('rowdy-logger');
 const app = express();
 const PORT = process.env.PORT || 4040;
 const mongoose = require('mongoose');
-require('dotenv').config();
+
 
 //Setup database with mongoose
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -22,8 +23,8 @@ app.use(express.json());  //set to accept json
 
 
 //routes
-const riddleRouter = require('./routes/riddles'); //routes directory
-app.use('/riddles', riddleRouter);
+const riddlesRouter = require('./routes/riddles'); //routes directory
+app.use('/riddles', riddlesRouter);
 
 
 //listen

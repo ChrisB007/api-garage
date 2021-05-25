@@ -37,17 +37,26 @@ router.post('/', async (req,res) => {
 });
 
 //Updating ONE riddle
-
-router.patch('/:id', getRiddle, (req,res) => {
+router.patch('/:id', getRiddle, async(req,res) => {
     if(req.body.riddle != null){
         res.riddle.riddle = req.body.riddle;
+    }
+    if(req.body.answer != null){
+        res.riddle.answer = req.body.answer;
+    }
+
+    try{
+        const updatedRiddle = await res.riddle.save()
+        res.json(updatedRiddle)
+    } catch(err) {
+        res.status(400).json({message: err.message});
+
     }
 
 });
 
 
 // Deleting ONE riddle
-
 router.delete('/:id', getRiddle, async(req,res) => {
     try {
         await res.riddle.remove()

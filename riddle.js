@@ -57,7 +57,7 @@ const appRiddle = [
     "id":19,
     "Riddle": "The more of this there is, the less you see. What is it?",
     "Answer": "Darkness" ,
-    // Riddles for Kids
+    // Easy Riddles
     "id":20,
     "Riddle": "David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?",
     "Answer": "David",
@@ -171,11 +171,11 @@ const appRiddle = [
     "Answer": "Your legs",
     "id":57,
     "Riddle": "What has four wheels and flies?",
-    "Answer": "A garbage truck", 
-    // Math Riddles
-    "id":58, 
-    "Riddle": "I am an odd number. Take away a letter and I become even. What number am I?",
-    "Answer": "Seven",
+    "Answer": "A garbage truck",
+    "id":58,
+    "Riddle": "Use me well and keep me clean, I’ll never tell what I have seen...What am I?",
+    "Answer": "A toilet",
+    // Medium Riddles
     "id":59, 
     "Riddle": "If two’s company, and three’s a crowd, what are four and five?",
     "Answer": "Nine",
@@ -258,7 +258,7 @@ const appRiddle = [
     "id":85, 
     "Riddle":" What word in the English language does the following: The first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire world signifies a great woman. What is the word?",
     "Answer": "Heroine",
-    // Really Hard Riddles
+    // Hard Riddles
     "id":86, 
     "Riddle": "What is so fragile that saying its name breaks it?",
     "Answer": "Silence.",
@@ -306,7 +306,10 @@ const appRiddle = [
     "Answer": "A map",
     "id":101, 
     "Riddle": "What does man love more than life, hate more than death or mortal strife; that which contented men desire; the poor have, the rich require; the miser spends, the spendthrift saves, and all men carry to their graves?",
-    "Answer": "Nothing"
+    "Answer": "Nothing",
+    "id":102, 
+    "Riddle": "I am an odd number. Take away a letter and I become even. What number am I?",
+    "Answer": "Seven"
     }
 ]
 
