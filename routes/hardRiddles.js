@@ -9,7 +9,7 @@ router.get("/hardriddles", async (req, res) => {
     const riddles = await Riddle.find();
     res.status(200).send({ data: riddles, error: "", status: 200 });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -19,7 +19,7 @@ router.get("/hardriddles/:id", async (req, res) => {
     const riddle = await Riddle.findById(req.params.id);
     res.status(200).json(riddle);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -33,7 +33,7 @@ router.post("/hardriddles", async (req, res) => {
     const newRiddle = await riddle.save();
     res.status(201).json(newRiddle);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -50,7 +50,7 @@ router.patch("/hardriddles/:id", getRiddle, async (req, res) => {
     const updatedRiddle = await res.riddle.save();
     res.json(updatedRiddle);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -73,7 +73,7 @@ async function getRiddle(req, res) {
       return res.status(404).json({ message: "Cannot find riddle" });
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res.status(500).send({ data: {}, error: err, status: 500 });
   }
 
   res.riddle = riddle;

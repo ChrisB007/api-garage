@@ -1,25 +1,25 @@
 const router = require("express").Router();
 const Riddle = require("../models/riddleModel");
-const data = require("../riddle");
+const { easyRiddles } = require("../riddle");
 
 //Getting ALL riddles - Good code
 router.get("/easyriddles", async (req, res) => {
   try {
-    console.log(data.easyRiddles);
-    const riddles = await Riddle.find();
-    res.status(200).send({ data: riddles, error: "", status: 200 });
+    console.log();
+    const riddles = easyRiddles;
+    res.status(200).json(riddles);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
 //Getting ONE riddle - Good code
 router.get("/easyriddles/:id", async (req, res) => {
   try {
-    const riddle = await Riddle.findById(req.params.id);
+    const riddle = easyRiddles;
     res.status(200).json(riddle);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -30,10 +30,10 @@ router.post("/easyriddles", async (req, res) => {
     answer: req.body.answer,
   });
   try {
-    const newRiddle = await riddle.save();
-    res.status(201).json(newRiddle);
+    const newRiddle = easyRiddles;
+    res.status(201).send({ data: newRiddle, data: "", status: 200 });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -47,10 +47,10 @@ router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
   }
 
   try {
-    const updatedRiddle = await res.riddle.save();
-    res.json(updatedRiddle);
+    const updatedRiddle = easyRiddles;
+    res.status(200).send({ data: updatedRiddle, error: "", status: 200 });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
@@ -58,9 +58,9 @@ router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
 router.delete("/easyriddles/:id", getRiddle, async (req, res) => {
   try {
     await res.riddle.remove();
-    res.json({ message: "Deleted Riddle" });
+    res.status(200).send({ message: "Deleted Riddle" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 
@@ -70,10 +70,10 @@ async function getRiddle(req, res) {
     riddle = await Riddle.findById(req.params.id);
 
     if (riddle == null) {
-      return res.status(404).json({ message: "Cannot find riddle" });
+      return res.status(404).send({ message: "Cannot find riddle" });
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res.status(500).send({ data: {}, error: err, status: 500 });
   }
 
   res.riddle = riddle;
