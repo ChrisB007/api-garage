@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const Riddle = require("../models/riddleModel");
-const { easyRiddles } = require("../riddle");
+const { hardRiddles } = require("../riddle");
 
 //Getting ALL riddles - Good code
-router.get("/easyriddles", async (req, res) => {
+router.get("/hardriddles", async (req, res) => {
   try {
-    console.log(easyRiddles);
+    console.log(hardRiddles);
     const riddles = await Riddle.find();
     res.status(200).send({ data: riddles, error: "", status: 200 });
   } catch (err) {
@@ -14,7 +14,7 @@ router.get("/easyriddles", async (req, res) => {
 });
 
 //Getting ONE riddle - Good code
-router.get("/easyriddles/:id", async (req, res) => {
+router.get("/hardriddles/:id", async (req, res) => {
   try {
     const riddle = await Riddle.findById(req.params.id);
     res.status(200).json(riddle);
@@ -24,7 +24,7 @@ router.get("/easyriddles/:id", async (req, res) => {
 });
 
 //Creating ONE riddle
-router.post("/easyriddles", async (req, res) => {
+router.post("/hardriddles", async (req, res) => {
   const riddle = new Riddle({
     riddle: req.body.riddle,
     answer: req.body.answer,
@@ -38,7 +38,7 @@ router.post("/easyriddles", async (req, res) => {
 });
 
 //Updating ONE riddle
-router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
+router.patch("/hardriddles/:id", getRiddle, async (req, res) => {
   if (req.body.riddle != null) {
     res.riddle.riddle = req.body.riddle;
   }
@@ -55,7 +55,7 @@ router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
 });
 
 // Deleting ONE riddle
-router.delete("/easyriddles/:id", getRiddle, async (req, res) => {
+router.delete("/hardriddles/:id", getRiddle, async (req, res) => {
   try {
     await res.riddle.remove();
     res.json({ message: "Deleted Riddle" });

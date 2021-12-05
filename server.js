@@ -1,47 +1,52 @@
-//Variables
-require('dotenv').config();
-const express = require('express');
-const rowdyLogger = require('rowdy-logger');
+require("dotenv").config();
+const express = require("express");
+const rowdyLogger = require("rowdy-logger");
+const mongoose = require("mongoose");
+const riddles = require("./routes/riddles");
+const medriddles = require("./routes/mediumRiddles");
+const hardriddles = require("./routes/hardRiddles");
+
 const app = express();
 const PORT = process.env.PORT || 4040;
-const mongoose = require('mongoose');
 
+const dbURL = process.env.DATABASE_URL;
 
-//Setup database with mongoose
-mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true});
-
-//check for error / successful connection
-const db = mongoose.connection;
-
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to database'));
-
+mongoose
+  .connect(dbURL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database is successfully connected");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 
 //middleware
 const startRowdy = rowdyLogger.begin(app);
-app.use(express.json());  //set to accept json
+app.use(express.json());
 
+//routes import
+app.use("/api", riddles);
+app.use("/api", medriddles);
+app.use("/api", hardriddles);
 
-//routes
-const riddlesRouter = require('./routes/riddles'); //routes directory
-app.use('/riddles', riddlesRouter);
-
+app.get("/", (req, res) => {
+  try {
+    res.status(200).send({
+      data: "When you die, what part of the body dies last? The pupils…they dilate. 🎉",
+      error: "",
+      status: 200,
+    });
+  } catch (error) {
+    res.status(500).send({ data: {}, error: error, status: 500 });
+  }
+});
 
 //listen
-app.listen(PORT, (() =>{
-    console.log(`Server is listening at port ${PORT}`);
-    startRowdy.print();
-})
-);
-
-
-
-
-
-
-
-
-
-
-
-
+app.listen(PORT, () => {
+  console.log(`Server is listening at port ${PORT}`);
+  startRowdy.print();
+});
