@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const Riddle = require("../models/riddleModel");
-const { mediumRiddles } = require("../riddle");
+const data = require("../riddle");
 
 //Getting ALL riddles - Good code
 router.get("/mediumriddles", async (req, res) => {
   try {
-    console.log(mediumRiddles);
+    console.log(data.mediumRiddles);
     const riddles = await Riddle.find();
     res.status(200).send({ data: riddles, error: "", status: 200 });
   } catch (err) {
