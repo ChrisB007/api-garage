@@ -30,12 +30,12 @@ router.get("/easyriddles/:id", async (req, res) => {
 
 //Creating ONE riddle
 router.post("/easyriddles", async (req, res) => {
-  const riddle = new Riddle({
+  const riddle = new easyRiddles({
     riddle: req.body.riddle,
     answer: req.body.answer,
   });
   try {
-    const newRiddle = easyRiddles;
+    const newRiddle = await riddle.save();
     res.status(201).json(newRiddle);
   } catch (err) {
     res.status(400).send({ data: {}, error: err, status: 500 });
