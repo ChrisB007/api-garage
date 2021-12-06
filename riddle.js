@@ -1,147 +1,173 @@
 const easyRiddles = [
   {
+    id: 1,
     Riddle: "What has to be broken before you can use it?",
     Answer: "An egg",
   },
   {
+    id: 2,
     Riddle: "I’m tall when I’m young, and I’m short when I’m old. What am I?",
     Answer: "A candle",
   },
   {
+    id: 3,
     Riddle: "What month of the year has 28 days?",
     Answer: "All of them",
   },
   {
+    id: 4,
     Riddle: "What is full of holes but still holds water?",
     Answer: "A sponge",
   },
   {
+    id: 5,
     Riddle: "What question can you never answer yes to?",
     Answer: "Are you asleep yet?",
   },
   {
+    id: 6,
     Riddle: "What is always in front of you but can’t be seen?",
     Answer: "The future",
   },
   {
+    id: 7,
     Riddle:
       "There’s a one-story house in which everything is yellow. Yellow walls, yellow doors, yellow furniture. What color are the stairs?",
     Answer: "There aren’t any—it’s a one-story house.",
   },
   {
+    id: 8,
     Riddle: "What can you break, even if you never pick it up or touch it?",
     Answer: "A promise",
   },
   {
+    id: 9,
     Riddle: "What goes up but never comes down?",
     Answer: "Your age",
   },
   {
+    id: 10,
     Riddle:
       "A man who was outside in the rain without an umbrella or hat didn’t get a single hair on his head wet. Why?",
     Answer: "He was bald.",
   },
+  { id: 11, Riddle: "What gets wet while drying?", Answer: "A towel" },
   {
-    Riddle: "What gets wet while drying?",
-    Answer: "A towel",
-  },
-  {
+    id: 12,
     Riddle: "What can you keep after giving to someone?",
     Answer: "Your word",
   },
   {
+    id: 13,
     Riddle: "I shave every day, but my beard stays the same. What am I?",
     Answer: "A barber",
   },
   {
+    id: 14,
     Riddle:
       "You see a boat filled with people, yet there isn’t a single person on board. How is that possible?",
     Answer: "All the people on the boat are married.",
   },
   {
+    id: 15,
     Riddle:
       "You walk into a room that contains a match, a kerosene lamp, a candle and a fireplace. What would you light first?",
     Answer: "The match",
   },
   {
+    id: 16,
     Riddle: "A man dies of old age on his 25 birthday. How is this possible?",
     Answer: "He was born on February 29.",
   },
   {
+    id: 17,
     Riddle: "I have branches, but no fruit, trunk or leaves. What am I?",
     Answer: "A bank",
   },
   {
+    id: 18,
     Riddle: "What can’t talk but will reply when spoken to?",
     Answer: "An echo",
   },
   {
+    id: 19,
     Riddle: "The more of this there is, the less you see. What is it?",
     Answer: "Darkness",
   },
   {
+    id: 20,
     Riddle:
       "David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?",
     Answer: "David",
   },
   {
+    id: 21,
     Riddle:
       "I follow you all the time and copy your every move, but you can’t touch me or catch me. What am I?",
     Answer: "Your shadow",
   },
   {
+    id: 22,
     Riddle: "What has many keys but can’t open a single lock?",
     Answer: "A piano",
   },
   {
+    id: 23,
     Riddle: "What can you hold in your left hand but not in your right?",
     Answer: "Your right elbow",
   },
   {
+    id: 24,
     Riddle: "What is black when it’s clean and white when it’s dirty?",
     Answer: "A chalkboard",
   },
   {
+    id: 25,
     Riddle: "What gets bigger when more is taken away?",
     Answer: "A hole",
   },
   {
+    id: 26,
     Riddle:
       "I’m light as a feather, yet the strongest person can’t hold me for five minutes. What am I?",
     Answer: "Your breath",
   },
   {
+    id: 27,
     Riddle:
       "I’m found in socks, scarves and mittens; and often in the paws of playful kittens. What am I?",
     Answer: "Yarn",
   },
   {
+    id: 28,
     Riddle: "Where does today come before yesterday?",
     Answer: "The dictionary",
   },
   {
+    id: 29,
     Riddle: "What invention lets you look right through a wall?",
     Answer: "A window",
   },
   {
+    id: 30,
     Riddle:
       "If you’ve got me, you want to share me; if you share me, you haven’t kept me. What am I?",
     Answer: "A secret",
   },
+  { id: 31, Riddle: "What can’t be put in a saucepan?", Answer: "It’s lid" },
   {
-    Riddle: "What can’t be put in a saucepan?",
-    Answer: "It’s lid",
-  },
-  {
+    id: 32,
     Riddle: "What goes up and down but doesn’t move?",
     Answer: "A staircase",
   },
   {
+    id: 33,
     Riddle:
       "If you’re running in a race and you pass the person in second place, what place are you in?",
     Answer: "Second place",
   },
   {
+    id: 34,
     Riddle:
       "It belongs to you, but other people use it more than you do. What is it?",
     Answer: "Your name",
@@ -150,6 +176,7 @@ const easyRiddles = [
 
 const mediumRiddles = [
   {
+    id: 1,
     Riddle: "What has lots of eyes, but can’t see?",
     Answer: "A potato",
   },
@@ -303,6 +330,7 @@ const mediumRiddles = [
 
 const hardRiddles = [
   {
+    id: 1,
     Riddle:
       " What five-letter word becomes shorter when you add two letters to it?",
     Answer: "Short",
