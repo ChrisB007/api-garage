@@ -62,7 +62,7 @@ router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
 // Deleting ONE riddle
 router.delete("/easyriddles/:id", getRiddle, async (req, res) => {
   try {
-    await res.easyRiddles.remove();
+    await easyRiddles.remove();
     res.status(200).json({ message: "Deleted Riddle" });
   } catch (error) {
     res.status(500).send({ message: error.message });

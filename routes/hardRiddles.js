@@ -45,10 +45,10 @@ router.post("/hardriddles", async (req, res) => {
 //Updating ONE riddle
 router.patch("/hardriddles/:id", getRiddle, async (req, res) => {
   if (req.body.riddle != null) {
-    res.hardRiddles.Riddle = req.body.riddle;
+    hardRiddles.Riddle = req.body.riddle;
   }
   if (req.body.answer != null) {
-    res.hardRiddles.Answer = req.body.answer;
+    hardRiddles.Answer = req.body.answer;
   }
 
   try {
@@ -62,7 +62,7 @@ router.patch("/hardriddles/:id", getRiddle, async (req, res) => {
 // Deleting ONE riddle
 router.delete("/hardriddles/:id", getRiddle, async (req, res) => {
   try {
-    await res.hardRiddles.remove();
+    await hardRiddles.remove();
     res.status(200).json({ message: "Deleted Riddle" });
   } catch (error) {
     res.status(500).send({ message: error.message });
