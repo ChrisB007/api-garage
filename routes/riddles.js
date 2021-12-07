@@ -14,8 +14,8 @@ router.get("/easyriddles", async (req, res) => {
 
 //Getting ONE riddle
 router.get("/easyriddles/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params;
     const riddle = await easyRiddles.find((easyRiddle) => {
       return easyRiddle.id === Number(id);
     });
@@ -31,8 +31,8 @@ router.get("/easyriddles/:id", async (req, res) => {
 //Creating ONE riddle
 router.post("/easyriddles", async (req, res) => {
   const riddle = new easyRiddles({
-    riddle: req.body.riddle,
-    answer: req.body.answer,
+    Riddle: req.body.riddle,
+    Answer: req.body.answer,
   });
   try {
     const newRiddle = await riddle.save();
@@ -45,14 +45,14 @@ router.post("/easyriddles", async (req, res) => {
 //Updating ONE riddle
 router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
   if (req.body.riddle != null) {
-    res.riddle.riddle = req.body.riddle;
+    res.easyRiddles.Riddle = req.body.riddle;
   }
   if (req.body.answer != null) {
-    res.riddle.answer = req.body.answer;
+    res.easyRiddles.Answer = req.body.answer;
   }
 
   try {
-    const updatedRiddle = easyRiddles;
+    const updatedRiddle = await easyRiddles.save();
     res.status(200).json(updatedRiddle);
   } catch (err) {
     res.status(400).send({ data: {}, error: err, status: 500 });
@@ -62,7 +62,7 @@ router.patch("/easyriddles/:id", getRiddle, async (req, res) => {
 // Deleting ONE riddle
 router.delete("/easyriddles/:id", getRiddle, async (req, res) => {
   try {
-    await res.riddle.remove();
+    await res.easyRiddles.remove();
     res.status(200).json({ message: "Deleted Riddle" });
   } catch (error) {
     res.status(500).send({ message: error.message });

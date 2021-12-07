@@ -1,66 +1,71 @@
 const router = require("express").Router();
 const Riddle = require("../models/riddleModel");
-const data = require("../riddle");
+const { mediumRiddles } = require("../riddle");
 
 //Getting ALL riddles - Good code
 router.get("/mediumriddles", async (req, res) => {
   try {
-    console.log(data.mediumRiddles);
-    const riddles = await Riddle.find();
-    res.status(200).send({ data: riddles, error: "", status: 200 });
+    const riddles = await mediumRiddles;
+    res.status(200).json(riddles);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
-//Getting ONE riddle - Good code
+//Getting ONE riddle
 router.get("/mediumriddles/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const riddle = await Riddle.findById(req.params.id);
+    const riddle = await mediumRiddles.find((easyRiddle) => {
+      return easyRiddle.id === Number(id);
+    });
+    if (!riddle) {
+      return res.status(404).send("Riddle does not exist");
+    }
     res.status(200).json(riddle);
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).send({ data: {}, error: err, status: 500 });
   }
 });
 
 //Creating ONE riddle
 router.post("/mediumriddles", async (req, res) => {
-  const riddle = new Riddle({
-    riddle: req.body.riddle,
-    answer: req.body.answer,
+  const riddle = new mediumRiddles({
+    Riddle: req.body.riddle,
+    Answer: req.body.answer,
   });
   try {
     const newRiddle = await riddle.save();
     res.status(201).json(newRiddle);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
 //Updating ONE riddle
 router.patch("/mediumriddles/:id", getRiddle, async (req, res) => {
   if (req.body.riddle != null) {
-    res.riddle.riddle = req.body.riddle;
+    res.mediumriddles.Riddle = req.body.riddle;
   }
   if (req.body.answer != null) {
-    res.riddle.answer = req.body.answer;
+    res.mediumriddles.Answer = req.body.answer;
   }
 
   try {
-    const updatedRiddle = await res.riddle.save();
-    res.json(updatedRiddle);
+    const updatedRiddle = await mediumRiddles.save();
+    res.status(200).json(updatedRiddle);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(400).send({ data: {}, error: err, status: 500 });
   }
 });
 
 // Deleting ONE riddle
 router.delete("/mediumriddles/:id", getRiddle, async (req, res) => {
   try {
-    await res.riddle.remove();
-    res.json({ message: "Deleted Riddle" });
+    await res.mediumRiddles.remove();
+    res.status(200).json({ message: "Deleted Riddle" });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send({ message: error.message });
   }
 });
 
@@ -69,11 +74,11 @@ async function getRiddle(req, res) {
   try {
     riddle = await Riddle.findById(req.params.id);
 
-    if (riddle == null) {
+    if (riddle === null) {
       return res.status(404).json({ message: "Cannot find riddle" });
     }
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    return res.status(500).send({ data: {}, error: err, status: 500 });
   }
 
   res.riddle = riddle;
